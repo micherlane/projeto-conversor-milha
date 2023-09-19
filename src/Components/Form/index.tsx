@@ -9,7 +9,7 @@ export function Form() {
     const [milhas, setMilhas] = useState('');
     const [valorMilhas, setValorMilhas] = useState('');
     const [bonusSelecionado, setbonusSelecionado] = useState('');
-    const listaBonus = ['80', '100', '200', '300', '500', '800'];
+    const [listaBonus, setlistaBonus] = useState(['80', '100', '200', '300', '500', '800']);
     const [bonusSelecionados, setbonusSelecionados] = useState(Array(listaBonus.length).fill(false));
 
 
@@ -22,7 +22,9 @@ export function Form() {
             } 
 
             return bonus = false;
-        });      
+        })
+    
+        
 
         setbonusSelecionados(bonusSelecionadosAtualizado);
         setbonusSelecionado(value);
@@ -31,12 +33,12 @@ export function Form() {
     return (
         <div className="formStyles">
             <form>
-                <div>
+                <div className="milhasContainer">
                     <label>Milhas</label>
                     <Input type="text" placeholder='100.000'/>
                 </div>
 
-                <div>
+                <div className="milheiroContainer">
                     <label>Preço Milheiro</label>
                     <Input type="text" placeholder='R$ 0.00'/>
                 </div>
