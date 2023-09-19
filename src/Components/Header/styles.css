@@ -2,10 +2,10 @@
     height: 5rem;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding:  2rem;
 
     display: flex;
     align-items: center;
 
-    border-bottom: 1rem solid var(--black);
+    border-bottom: 0.4rem solid var(--black);
 }

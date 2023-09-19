@@ -18,6 +18,11 @@ export function Form() {
                     <Input type="text" placeholder='R$ 0.00'/>
                 </div>
 
+                <div>
+                    <label>Desconto</label>
+                    <Input type="text" placeholder='100%'></Input>
+                </div>
+
                 <div className="bonusContainer">
                     <p>Bônus</p>
                     <div className='bonusItems'>

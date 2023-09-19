@@ -1,13 +1,19 @@
 .formStyles {
-    margin-top: 2rem;
-    width: 600px;
+    margin-top: 1rem;
+    max-width: 600px;
+    min-width: 300px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-left: 0.3rem solid gray;
-    border-right: 0.3rem solid gray;
     padding: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 label, .bonusContainer p{
@@ -16,29 +22,20 @@ label, .bonusContainer p{
     margin-bottom: 8px;
 }
 
-.milhasContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
+.milhasContainer, .milheiroContainer, .bonusContainer {
+    margin-bottom: 1.5rem;
 }
 
-.milheiroContainer {
+.bonusContainer {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    margin-bottom: 0.5rem;
-}
-
-.bonusContainer{
-    display: flex;
     align-items: center;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
-    padding: 0.2rem;
 }
 
 .bonusItems{
     display: flex;
     justify-content: space-around;
+    margin-top: 0.5rem;
+    width: 80%;
+    flex-wrap: wrap;
 }
