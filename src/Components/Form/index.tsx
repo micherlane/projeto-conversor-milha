@@ -3,8 +3,31 @@ import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Bonus } from '../Bonus';
 import { Resultado } from '../Resultado';
+import { useState } from 'react';
 
 export function Form() {
+    const [milhas, setMilhas] = useState('');
+    const [valorMilhas, setValorMilhas] = useState('');
+    const [bonusSelecionado, setbonusSelecionado] = useState('');
+    const [listaBonus, setlistaBonus] = useState(['80', '100', '200', '300', '500', '800']);
+    const [bonusSelecionados, setbonusSelecionados] = useState(Array(listaBonus.length).fill(false));
+
+
+    const selecionarBonus = (index: number, value: string) => {
+        let bonusSelecionadosAtualizado = [...bonusSelecionados];
+
+        bonusSelecionadosAtualizado = bonusSelecionadosAtualizado.map((bonus, indice) => {
+            if(index === indice){
+                return true;
+            } 
+
+            return bonus = false;
+        });      
+
+        setbonusSelecionados(bonusSelecionadosAtualizado);
+        setbonusSelecionado(value);
+    }
+
     return (
         <div className="formStyles">
             <form>
@@ -26,14 +49,11 @@ export function Form() {
                 <div className="bonusContainer">
                     <p>Bônus</p>
                     <div className='bonusItems'>
-                        <Bonus valor='90' isSelected={true}/>
-                        <Bonus valor='90'/>
-                        <Bonus valor='90'/>
-                        <Bonus valor='90'/>
-                        <Bonus valor='90'/>
-                        <Bonus valor='90'/>
+                        {listaBonus.map((valorBonus, index) => (
+                            <Bonus key={index} valor={valorBonus} isSelected={bonusSelecionados[index]} onClicked={() => selecionarBonus(index, valorBonus)}/>
+                         ))}
                     </div>
-
+                       
                 </div>
                 <div className="botaoContainer">
                     <Button>Calcular</Button>
