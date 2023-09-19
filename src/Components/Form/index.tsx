@@ -31,12 +31,12 @@ export function Form() {
     return (
         <div className="formStyles">
             <form>
-                <div className="milhasContainer">
+                <div>
                     <label>Milhas</label>
                     <Input type="text" placeholder='100.000'/>
                 </div>
 
-                <div className="milheiroContainer">
+                <div>
                     <label>Preço Milheiro</label>
                     <Input type="text" placeholder='R$ 0.00'/>
                 </div>
