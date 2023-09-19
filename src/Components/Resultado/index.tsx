@@ -5,8 +5,8 @@ interface ResultadoProps {
 }
 export function Resultado({valor}: ResultadoProps){
     return (
-        <div>
-            <p>Cada milheiro saíra por <span>R$ {valor}</span></p>
+        <div className='resultadoStyle'>
+            <p>Cada milheiro sairá por <span>R$ {valor}</span></p>
         </div>
     )
 }
