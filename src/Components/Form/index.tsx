@@ -9,7 +9,7 @@ export function Form() {
     const [milhas, setMilhas] = useState('');
     const [valorMilhas, setValorMilhas] = useState('');
     const [bonusSelecionado, setbonusSelecionado] = useState('');
-    const [listaBonus, setlistaBonus] = useState(['80', '100', '200', '300', '500', '800']);
+    const listaBonus = ['80', '100', '200', '300', '500', '800'];
     const [bonusSelecionados, setbonusSelecionados] = useState(Array(listaBonus.length).fill(false));
 
 
