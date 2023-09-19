@@ -1,4 +1,13 @@
 import './styles.css'
-export function Bonus({...rest}){
-    return (<button className='bonusStyles' {...rest}></button>)
+
+interface BonusProps {
+    valor: string;
+    isSelected?: boolean
+}
+export function Bonus({valor, isSelected = false}: BonusProps){
+    const bonusClass = isSelected ? 'bonusStyles selected' : 'bonusStyles';
+
+    return (<div className={bonusClass}>
+        <p>{valor}</p>
+    </div>)
 }

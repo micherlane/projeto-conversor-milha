@@ -26,12 +26,12 @@ export function Form() {
                 <div className="bonusContainer">
                     <p>Bônus</p>
                     <div className='bonusItems'>
-                        <Bonus>80%</Bonus>
-                        <Bonus>200%</Bonus>
-                        <Bonus>80%</Bonus>
-                        <Bonus>200%</Bonus>
-                        <Bonus>80%</Bonus>
-                        <Bonus>200%</Bonus>
+                        <Bonus valor='90' isSelected={true}/>
+                        <Bonus valor='90'/>
+                        <Bonus valor='90'/>
+                        <Bonus valor='90'/>
+                        <Bonus valor='90'/>
+                        <Bonus valor='90'/>
                     </div>
 
                 </div>
