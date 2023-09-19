@@ -1,5 +1,4 @@
 .formStyles {
-    margin-top: 1rem;
     max-width: 600px;
     min-width: 300px;
     width: 100%;
@@ -22,9 +21,7 @@ label, .bonusContainer p{
     margin-bottom: 8px;
 }
 
-.milhasContainer, .milheiroContainer, .bonusContainer {
-    margin-bottom: 1.5rem;
-}
+
 
 .bonusContainer {
     display: flex;
