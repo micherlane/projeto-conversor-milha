@@ -9,8 +9,14 @@ export function Form() {
     const [milhas, setMilhas] = useState('');
     const [valorMilhas, setValorMilhas] = useState('');
     const [bonusSelecionado, setbonusSelecionado] = useState('');
-    const [listaBonus, setlistaBonus] = useState(['80', '100', '200', '300', '500', '800']);
+    const listaBonus = ['80', '100', '200', '300', '500', '800'];
     const [bonusSelecionados, setbonusSelecionados] = useState(Array(listaBonus.length).fill(false));
+
+    const handleCalcular = () => {
+        console.log(milhas, valorMilhas, bonusSelecionado);
+        setMilhas('')
+        setValorMilhas('')
+    }
 
 
     const selecionarBonus = (index: number, value: string) => {
@@ -21,7 +27,8 @@ export function Form() {
                 return true;
             } 
 
-            return bonus = false;
+            bonus = false;
+            return bonus;
         })
     
         
@@ -32,7 +39,7 @@ export function Form() {
 
     return (
         <div className="formStyles">
-            <form>
+            <form onSubmit={handleCalcular}>
                 <div className="milhasContainer">
                     <label>Milhas</label>
                     <Input type="text" placeholder='100.000'/>
