@@ -13,4 +13,32 @@
 label, .bonusContainer p{
     font-size: 1.4rem;
     font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.milhasContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+.milheiroContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+.bonusContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem;
+}
+
+.bonusItems{
+    display: flex;
+    justify-content: space-around;
 }
