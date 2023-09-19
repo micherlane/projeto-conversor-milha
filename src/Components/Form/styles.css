@@ -1,0 +1,16 @@
+.formStyles {
+    margin-top: 2rem;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-left: 0.3rem solid gray;
+    border-right: 0.3rem solid gray;
+    padding: 2rem;
+}
+
+label, .bonusContainer p{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
