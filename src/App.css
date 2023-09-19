@@ -10,6 +10,9 @@
   --black: #000;
 }
 
+html {
+  font: 400 1rem Verdana;
+}
 button {
   cursor: pointer;
 }

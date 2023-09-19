@@ -1,0 +1,8 @@
+.inputStyles {
+    height: 40px;
+    width: 100%;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid gray;
+}

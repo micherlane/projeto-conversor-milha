@@ -1,0 +1,11 @@
+.headerContainer {
+    height: 5rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1rem solid var(--black);
+}
