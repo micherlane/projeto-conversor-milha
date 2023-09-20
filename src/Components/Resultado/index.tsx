@@ -13,6 +13,7 @@ interface ResultadosObject {
     milhasDeBonus: string;
     milhasTotal: string;
     valorTotal: string;
+    valorPorMilhas: string;
 }
 export function Resultado( {resultados}: ResultadoProps){
     return (
@@ -24,6 +25,8 @@ export function Resultado( {resultados}: ResultadoProps){
             <p>{resultados.milhasCompradas}</p>
             <p>Desconto:</p>
             <p>{resultados.desconto}</p>
+            <p>Valor de desconto: </p>
+            <p>R$ {resultados.valorDesconto}/milheiro</p>
             <p>Bônus:</p>
             <p>{resultados.bonus}</p>
             <p>Milhas de Bônus: </p>
@@ -32,6 +35,8 @@ export function Resultado( {resultados}: ResultadoProps){
             <p>{resultados.milhasTotal}</p>
             <p>Valor total:</p>
             <p>{resultados.valorTotal}</p>
+            <p>VALOR FINAL MILHEIRO:</p>
+            <p>R$ {resultados.valorPorMilhas}/milheiro</p>
         </div>
     )
 }

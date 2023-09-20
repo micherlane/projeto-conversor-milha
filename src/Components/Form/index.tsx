@@ -4,6 +4,10 @@ import { Input } from "../ui/Input";
 import { Bonus } from '../Bonus';
 import { Resultado } from '../Resultado';
 import { useState, FormEvent } from 'react';
+import { CalculoBonusController } from '../../utils/controllers/CalculoBonusController';
+import { ConversorDadosNumber } from '../../utils/controllers/ConversorDadosNumber';
+import { CalculoDescontoController } from '../../utils/controllers/CalculoDescontController';
+import { CalculoValorPorMilhasController } from '../../utils/controllers/CalculoValorPorMilhasController';
 
 export function Form() {
 
@@ -27,6 +31,7 @@ export function Form() {
         milhasDeBonus: '0',
         milhasTotal: '0',
         valorTotal: '0',
+        valorPorMilhas: '0'
     });
     const [estaCalculadoResultado, setEstaCalculadoResultado] = useState(true);
 
@@ -53,17 +58,24 @@ export function Form() {
     const handleCalcular = (event: FormEvent) => {
         event.preventDefault();
 
-        console.log(milhasCompradas, valorReferencia, bonusSelecionado, desconto);
-        
+        const milhasDeBonus = CalculoBonusController.calcularBonus(milhasCompradas, bonusSelecionado);
+
+        const milhasTotal = milhasDeBonus + ConversorDadosNumber.converterDados(milhasCompradas);
+
+        const valorComDesconto = CalculoDescontoController.calcularDesconto(valorReferencia, desconto);
+
+        const valorPorMilhas = CalculoValorPorMilhasController.calcularValorPorMilhas(milhasTotal, valorComDesconto);
+
         setResultado({ 
-            valorReferencia: '0',
-            milhasCompradas: '0',
-            desconto: '0',
-            valorDesconto: '0',
-            bonus: '0',
-            milhasDeBonus: '0',
-            milhasTotal: '0',
-            valorTotal: '0',
+            valorReferencia: valorReferencia,
+            milhasCompradas: milhasCompradas,
+            desconto: desconto,
+            valorDesconto: valorComDesconto.toString(),
+            bonus: bonusSelecionado.toString(),
+            milhasDeBonus: milhasDeBonus.toString(),
+            milhasTotal: milhasTotal.toString(),
+            valorTotal: valorComDesconto.toString(),
+            valorPorMilhas: valorPorMilhas.toString()
         })
         setEstaCalculadoResultado(true);
     }

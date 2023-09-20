@@ -2,12 +2,12 @@ import { CalculoDescontoService } from "../services/CalculoDescontoService";
 import { ConversorDadosNumber } from "./ConversorDadosNumber";
 
 export class CalculoDescontoController{
-    public static calcularDesconto(valorReferencia:string, valorDesconto: string): Object{
+    public static calcularDesconto(valorReferencia:string, valorDesconto: string): number{
         const valor = ConversorDadosNumber.converterDados(valorReferencia);
         const desconto =  ConversorDadosNumber.converterDados(valorDesconto);
 
-        const resultados = new CalculoDescontoService().execute(valor, desconto);
+        const valorComDesconto = new CalculoDescontoService().execute(valor, desconto);
 
-        return resultados;
+        return valorComDesconto;
     }
 }

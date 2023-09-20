@@ -2,12 +2,11 @@ import { CalculoBonusService } from "../services/CalculoBonusService";
 import { ConversorDadosNumber } from "./ConversorDadosNumber";
 
 export class CalculoBonusController{
-    public static calcularBonus(milhasCompradas: string, quantidadeBonus: string): Object{
+    public static calcularBonus(milhasCompradas: string, quantidadeBonus: number): number{
         const milhasCompradasNumber = ConversorDadosNumber.converterDados(milhasCompradas);
-        const quantidadeBonusNumber =  ConversorDadosNumber.converterDados(quantidadeBonus);
 
-        const resultados = new CalculoBonusService().execute(milhasCompradasNumber, quantidadeBonusNumber);
+        const milhasDeBonus = new CalculoBonusService().execute(milhasCompradasNumber, quantidadeBonus);
         
-        return resultados;
+        return milhasDeBonus;
     }
 }
