@@ -8,14 +8,16 @@ import { useState } from 'react';
 export function Form() {
     const [milhas, setMilhas] = useState('');
     const [valorMilhas, setValorMilhas] = useState('');
+    const [desconto, setDesconto] = useState('');
     const [bonusSelecionado, setbonusSelecionado] = useState('');
     const listaBonus = ['80', '100', '200', '300', '500', '800'];
     const [bonusSelecionados, setbonusSelecionados] = useState(Array(listaBonus.length).fill(false));
 
     const handleCalcular = () => {
-        console.log(milhas, valorMilhas, bonusSelecionado);
+        console.log(milhas, valorMilhas, bonusSelecionado, desconto);
         setMilhas('')
         setValorMilhas('')
+        setDesconto('')
     }
 
 
@@ -42,17 +44,17 @@ export function Form() {
             <form onSubmit={handleCalcular}>
                 <div className="milhasContainer">
                     <label>Milhas</label>
-                    <Input type="text" placeholder='100.000'/>
+                    <Input type="text" placeholder='100.000' onChange={(event) => setMilhas(event.target.value)} value={milhas}/>
                 </div>
 
                 <div className="milheiroContainer">
                     <label>Preço Milheiro</label>
-                    <Input type="text" placeholder='R$ 0.00'/>
+                    <Input type="text" placeholder='R$ 0.00' onChange={(event) => setValorMilhas(event.target.value)} value={valorMilhas}/>
                 </div>
 
                 <div>
                     <label>Desconto</label>
-                    <Input type="text" placeholder='100%'></Input>
+                    <Input type="text" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto}/>
                 </div>
 
                 <div className="bonusContainer">
