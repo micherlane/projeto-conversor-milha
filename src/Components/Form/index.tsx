@@ -55,6 +55,10 @@ export function Form() {
         setbonusSelecionado(value);
     }
 
+    const fecharResultado = () => {
+        setEstaCalculadoResultado(false);
+    }
+
     const handleCalcular = (event: FormEvent) => {
         event.preventDefault();
 
@@ -82,8 +86,11 @@ export function Form() {
 
    
     return (
+        
         <div className="formStyles">
-            <form onSubmit={handleCalcular}>
+
+            { !estaCalculadoResultado ? 
+                <form onSubmit={handleCalcular}>
                 <div className="milhasContainer">
                     <label>Milhas</label>
                     <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas} />
@@ -112,10 +119,14 @@ export function Form() {
                     <Button>Calcular</Button>
                 </div>
             </form>
-
-            {
-                estaCalculadoResultado ?  <Resultado resultados={resultado} /> : <div/>
-            }
+             
+            : 
+            <div>
+                <button onClick={fecharResultado}>fechar</button>
+                <Resultado resultados={resultado} /> 
+            </div>
+             }
+            
            
         </div>
 
