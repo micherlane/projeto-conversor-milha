@@ -6,24 +6,26 @@ import { Resultado } from '../Resultado';
 import { useState } from 'react';
 
 export function Form() {
+
+    // Entrada de dados.
     const [milhas, setMilhas] = useState('');
     const [valorMilhas, setValorMilhas] = useState('');
     const [desconto, setDesconto] = useState('');
     const [bonusSelecionado, setbonusSelecionado] = useState('');
+
+    // Lista de Bônus disponíveis.
     const listaBonus = ['80', '100', '200', '300', '500', '800'];
     const [bonusSelecionados, setbonusSelecionados] = useState(Array(listaBonus.length).fill(false));
 
-    const handleCalcular = () => {
-        console.log(milhas, valorMilhas, bonusSelecionado, desconto);
-        setMilhas('')
-        setValorMilhas('')
-        setDesconto('')
-    }
+    // Controle da exibição dos resultados.
+    const [resultado, setResultado] = useState('');
+    const [estaCalculadoResultado, setEstaCalculadoResultado] = useState(false);
 
-
-    const selecionarBonus = (index: number, value: string) => {
+     // Função para selecionar os bônus.
+     const selecionarBonus = (index: number, value: string) => {
         let bonusSelecionadosAtualizado = [...bonusSelecionados];
 
+        // Atualizar o bônus selecionado.
         bonusSelecionadosAtualizado = bonusSelecionadosAtualizado.map((bonus, indice) => {
             if(index === indice){
                 return true;
@@ -39,6 +41,13 @@ export function Form() {
         setbonusSelecionado(value);
     }
 
+    const handleCalcular = () => {
+        console.log(milhas, valorMilhas, bonusSelecionado, desconto);
+        setResultado('')
+        setEstaCalculadoResultado(true);
+    }
+
+   
     return (
         <div className="formStyles">
             <form onSubmit={handleCalcular}>
@@ -71,7 +80,11 @@ export function Form() {
                 </div>
             </form>
 
-            <Resultado valor='45' />
+
+            {
+                estaCalculadoResultado ?  <Resultado valor={resultado} /> : <div/>
+            }
+           
         </div>
 
     )
