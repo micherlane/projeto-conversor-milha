@@ -1,15 +1,50 @@
+.resultadoStyle,
+.resultadoStyle div {
+    width: 100%;
+}
+
 .resultadoStyle {
     border-radius: 0.5rem;
     border: 0.3rem solid;
     margin-top: 20px;
     display: flex;
     align-items: flex-start;
-    width: 100%;
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
+    padding: 1rem;
 }
 
-span {
+.resultadoStyle h3 {
+    border-bottom: 0.3rem solid;
+    margin-bottom: 1rem;
+}
+
+.resultadoStyle .informacoesStyle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 0.1rem dashed rgb(185, 185, 185);
+}
+
+.propriedadeStyle {
     font-weight: bold;
+}
+
+.valorFinalStyle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    border-top: 0.3rem solid;
+    padding-top: 1rem;
+}
+
+.valorFinalStyle p {
+    font-weight: bold;
+}
+
+.valorFinalStyle .valorMilheiro {
+    color: blue;
+    font-size: 1.2rem;
 }

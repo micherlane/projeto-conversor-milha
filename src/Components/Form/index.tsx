@@ -42,14 +42,14 @@ export function Form() {
         // Atualizar o bônus selecionado.
         bonusDisponiveisStatusAtualizado = bonusDisponiveisStatusAtualizado.map((bonus, indice) => {
             if(index === indice){
-                return true;
+                bonus = !bonus
+                return bonus;
             } 
 
             bonus = false;
             return bonus;
         })
     
-        
 
         setbonusDisponiveisStatus(bonusDisponiveisStatusAtualizado);
         setbonusSelecionado(value);
@@ -70,12 +70,12 @@ export function Form() {
             valorReferencia: valorReferencia,
             milhasCompradas: milhasCompradas,
             desconto: desconto,
-            valorDesconto: valorComDesconto.toString(),
+            valorDesconto: valorComDesconto.toPrecision(2).toString(),
             bonus: bonusSelecionado.toString(),
             milhasDeBonus: milhasDeBonus.toString(),
             milhasTotal: milhasTotal.toString(),
-            valorTotal: valorComDesconto.toString(),
-            valorPorMilhas: valorPorMilhas.toString()
+            valorTotal: valorComDesconto.toPrecision(2).toString(),
+            valorPorMilhas: valorPorMilhas.toPrecision(2).toString()
         })
         setEstaCalculadoResultado(true);
     }
@@ -86,17 +86,17 @@ export function Form() {
             <form onSubmit={handleCalcular}>
                 <div className="milhasContainer">
                     <label>Milhas</label>
-                    <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas}/>
+                    <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas} />
                 </div>
 
                 <div className="milheiroContainer">
                     <label>Preço Milheiro</label>
-                    <Input type="number" placeholder='R$ 0.00' onChange={(event) => setValorReferencia(event.target.value)} value={valorReferencia}/>
+                    <Input type="number" placeholder='R$ 0.00' onChange={(event) => setValorReferencia(event.target.value)} value={valorReferencia} min="0"/>
                 </div>
 
                 <div>
                     <label>Desconto</label>
-                    <Input type="number" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto}/>
+                    <Input type="number" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto} min="0" max="100"/>
                 </div>
 
                 <div className="bonusContainer">
