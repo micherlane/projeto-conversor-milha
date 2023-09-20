@@ -1,7 +1,7 @@
 import './styles.css'
 
 interface BonusProps {
-    valor: string;
+    valor: number;
     isSelected?: boolean,
     onClicked?: () => void;
 }

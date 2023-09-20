@@ -1,12 +1,37 @@
 import './styles.css'
 
 interface ResultadoProps {
-    valor: string;
+    resultados: ResultadosObject,
 }
-export function Resultado({valor}: ResultadoProps){
+
+interface ResultadosObject {
+    valorReferencia: string;
+    milhasCompradas: string;
+    desconto: string;
+    valorDesconto: string;
+    bonus: string;
+    milhasDeBonus: string;
+    milhasTotal: string;
+    valorTotal: string;
+}
+export function Resultado( {resultados}: ResultadoProps){
     return (
         <div className='resultadoStyle'>
-            <p>Cada milheiro sairá por <span>R$ {valor}</span></p>
+            <h3>COMPRA DE MILHAS</h3>
+            <p>Valor de referência:</p>
+            <p>R$ {resultados.valorReferencia}/milheiro</p>
+            <p>Milhas a comprar:</p>
+            <p>{resultados.milhasCompradas}</p>
+            <p>Desconto:</p>
+            <p>{resultados.desconto}</p>
+            <p>Bônus:</p>
+            <p>{resultados.bonus}</p>
+            <p>Milhas de Bônus: </p>
+            <p>{resultados.milhasDeBonus}</p>
+            <p>Milhas Totais:</p>
+            <p>{resultados.milhasTotal}</p>
+            <p>Valor total:</p>
+            <p>{resultados.valorTotal}</p>
         </div>
     )
 }

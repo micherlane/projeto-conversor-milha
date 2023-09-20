@@ -3,30 +3,39 @@ import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Bonus } from '../Bonus';
 import { Resultado } from '../Resultado';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 
 export function Form() {
 
     // Entrada de dados.
-    const [milhas, setMilhas] = useState('');
-    const [valorMilhas, setValorMilhas] = useState('');
+    const [milhasCompradas, setMilhasCompradas] = useState('');
+    const [valorReferencia, setValorReferencia] = useState('');
     const [desconto, setDesconto] = useState('');
-    const [bonusSelecionado, setbonusSelecionado] = useState('');
+    const [bonusSelecionado, setbonusSelecionado] = useState(0);
 
     // Lista de Bônus disponíveis.
-    const listaBonus = ['80', '100', '200', '300', '500', '800'];
-    const [bonusSelecionados, setbonusSelecionados] = useState(Array(listaBonus.length).fill(false));
+    const listaBonus = [80, 100, 200, 300, 500, 800];
+    const [bonusDisponiveisStatus, setbonusDisponiveisStatus] = useState(Array(listaBonus.length).fill(false));
 
     // Controle da exibição dos resultados.
-    const [resultado, setResultado] = useState('');
-    const [estaCalculadoResultado, setEstaCalculadoResultado] = useState(false);
+    const [resultado, setResultado] = useState({
+        valorReferencia: '0',
+        milhasCompradas: '0',
+        desconto: '0',
+        valorDesconto: '0',
+        bonus: '0',
+        milhasDeBonus: '0',
+        milhasTotal: '0',
+        valorTotal: '0',
+    });
+    const [estaCalculadoResultado, setEstaCalculadoResultado] = useState(true);
 
      // Função para selecionar os bônus.
-     const selecionarBonus = (index: number, value: string) => {
-        let bonusSelecionadosAtualizado = [...bonusSelecionados];
+     const selecionarBonus = (index: number, value: number) => {
+        let bonusDisponiveisStatusAtualizado = [...bonusDisponiveisStatus];
 
         // Atualizar o bônus selecionado.
-        bonusSelecionadosAtualizado = bonusSelecionadosAtualizado.map((bonus, indice) => {
+        bonusDisponiveisStatusAtualizado = bonusDisponiveisStatusAtualizado.map((bonus, indice) => {
             if(index === indice){
                 return true;
             } 
@@ -37,13 +46,25 @@ export function Form() {
     
         
 
-        setbonusSelecionados(bonusSelecionadosAtualizado);
+        setbonusDisponiveisStatus(bonusDisponiveisStatusAtualizado);
         setbonusSelecionado(value);
     }
 
-    const handleCalcular = () => {
-        console.log(milhas, valorMilhas, bonusSelecionado, desconto);
-        setResultado('')
+    const handleCalcular = (event: FormEvent) => {
+        event.preventDefault();
+
+        console.log(milhasCompradas, valorReferencia, bonusSelecionado, desconto);
+        
+        setResultado({ 
+            valorReferencia: '0',
+            milhasCompradas: '0',
+            desconto: '0',
+            valorDesconto: '0',
+            bonus: '0',
+            milhasDeBonus: '0',
+            milhasTotal: '0',
+            valorTotal: '0',
+        })
         setEstaCalculadoResultado(true);
     }
 
@@ -53,24 +74,24 @@ export function Form() {
             <form onSubmit={handleCalcular}>
                 <div className="milhasContainer">
                     <label>Milhas</label>
-                    <Input type="text" placeholder='100.000' onChange={(event) => setMilhas(event.target.value)} value={milhas}/>
+                    <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas}/>
                 </div>
 
                 <div className="milheiroContainer">
                     <label>Preço Milheiro</label>
-                    <Input type="text" placeholder='R$ 0.00' onChange={(event) => setValorMilhas(event.target.value)} value={valorMilhas}/>
+                    <Input type="number" placeholder='R$ 0.00' onChange={(event) => setValorReferencia(event.target.value)} value={valorReferencia}/>
                 </div>
 
                 <div>
                     <label>Desconto</label>
-                    <Input type="text" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto}/>
+                    <Input type="number" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto}/>
                 </div>
 
                 <div className="bonusContainer">
                     <p>Bônus</p>
                     <div className='bonusItems'>
                         {listaBonus.map((valorBonus, index) => (
-                            <Bonus key={index} valor={valorBonus} isSelected={bonusSelecionados[index]} onClicked={() => selecionarBonus(index, valorBonus)}/>
+                            <Bonus key={index} valor={valorBonus} isSelected={bonusDisponiveisStatus[index]} onClicked={() => selecionarBonus(index, valorBonus)}/>
                          ))}
                     </div>
                        
@@ -80,9 +101,8 @@ export function Form() {
                 </div>
             </form>
 
-
             {
-                estaCalculadoResultado ?  <Resultado valor={resultado} /> : <div/>
+                estaCalculadoResultado ?  <Resultado resultados={resultado} /> : <div/>
             }
            
         </div>
