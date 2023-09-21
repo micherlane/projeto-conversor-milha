@@ -10,7 +10,7 @@
     margin-bottom: 0.5rem;
 }
 
-.formStyles {
+.formStyles{
     max-width: 550px;
     min-width: 300px;
     width: 100%;
@@ -50,4 +50,23 @@ label, .bonusContainer p{
     margin-top: 0.5rem;
     width: 80%;
     flex-wrap: wrap;
+}
+
+.botaoFecharStyle {
+    background-color: rgba(255, 0, 0, 0.9);
+    border:none;
+    padding: 0.3rem 0.8rem;
+    color: white;
+    border-radius: 0.3rem;
+}
+
+.resultadosStyle{
+    max-width: 550px;
+    min-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(128, 128, 128, 0.5);
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }

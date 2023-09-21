@@ -87,10 +87,8 @@ export function Form() {
    
     return (
         <div className="containerCenter">
-
+            { !estaCalculadoResultado ? 
             <div className="formStyles">
-
-                { !estaCalculadoResultado ? 
                     <form onSubmit={handleCalcular}>
                     <div>
                         <h1>Calculador de Milhas</h1>
@@ -123,16 +121,14 @@ export function Form() {
                         <Button>Calcular</Button>
                     </div>
                 </form>
-                
-                : 
-                <div>
-                    <button onClick={fecharResultado}>fechar</button>
-                    <Resultado resultados={resultado} /> 
-                </div>
-                }
-                
-            
             </div>
+            : 
+            <div className='resultadosStyle'>
+                    <button onClick={fecharResultado} className='botaoFecharStyle'>fechar</button>
+                    <Resultado resultados={resultado} /> 
+            </div>
+            }
+                
         </div>
 
     )
