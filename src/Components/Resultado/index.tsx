@@ -26,7 +26,9 @@ export function Resultado( {resultados}: ResultadoProps){
 
     return (
         <div className='resultadoStyle'>
-            <h3>COMPRA DE MILHAS</h3>
+            <div>
+                <h3>COMPRA DE MILHAS</h3>
+            </div>
             
             {renderInformacoes('Valor de referência', `R$ ${resultados.valorReferencia}/milheiro`)}
             {renderInformacoes('Milhas a comprar', resultados.milhasCompradas)}

@@ -17,6 +17,8 @@
 .resultadoStyle h3 {
     border-bottom: 0.3rem solid;
     margin-bottom: 1rem;
+    text-align: center;
+    font-size: x-large;
 }
 
 .resultadoStyle .informacoesStyle {
