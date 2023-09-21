@@ -1,10 +1,17 @@
 .inputStyles {
     height: 50px;
     width: 100%;
-    border: 0;
+    border: none;
     border-radius: 1rem;
     margin-top: 0.5rem;
     padding: 1rem;
     font-size: 1.2rem;
     border: 1px solid gray;
+    transition: border-color 0.3s ease; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .inputStyles:focus {
+    outline: none; 
+    border-color: #000000;
 }
