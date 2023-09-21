@@ -33,7 +33,7 @@ export function Form() {
         valorTotal: '0',
         valorPorMilhas: '0'
     });
-    const [estaCalculadoResultado, setEstaCalculadoResultado] = useState(true);
+    const [estaCalculadoResultado, setEstaCalculadoResultado] = useState(false);
 
      // Função para selecionar os bônus.
      const selecionarBonus = (index: number, value: number) => {
