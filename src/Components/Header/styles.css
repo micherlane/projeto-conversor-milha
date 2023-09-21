@@ -2,10 +2,13 @@
     height: 5rem;
     max-width: 100%;
     margin: 0 auto;
-    padding:  2rem;
+    padding:  1rem 2rem;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    border-bottom: 0.4rem solid var(--black);
+    background-color: rgb(22, 22, 22);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0, 0.1);
 }

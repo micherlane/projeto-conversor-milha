@@ -86,48 +86,53 @@ export function Form() {
 
    
     return (
-        
-        <div className="formStyles">
+        <div className="containerCenter">
 
-            { !estaCalculadoResultado ? 
-                <form onSubmit={handleCalcular}>
-                <div className="milhasContainer">
-                    <label>Milhas</label>
-                    <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas} />
-                </div>
+            <div className="formStyles">
 
-                <div className="milheiroContainer">
-                    <label>Preço Milheiro</label>
-                    <Input type="number" placeholder='R$ 0.00' onChange={(event) => setValorReferencia(event.target.value)} value={valorReferencia} min="0"/>
-                </div>
-
-                <div>
-                    <label>Desconto</label>
-                    <Input type="number" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto} min="0" max="100"/>
-                </div>
-
-                <div className="bonusContainer">
-                    <p>Bônus</p>
-                    <div className='bonusItems'>
-                        {listaBonus.map((valorBonus, index) => (
-                            <Bonus key={index} valor={valorBonus} isSelected={bonusDisponiveisStatus[index]} onClicked={() => selecionarBonus(index, valorBonus)}/>
-                         ))}
+                { !estaCalculadoResultado ? 
+                    <form onSubmit={handleCalcular}>
+                    <div>
+                        <h1>Calculador de Milhas</h1>
                     </div>
-                       
+                    <div className="milhasContainer">
+                        <label>Milhas</label>
+                        <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas} />
+                    </div>
+
+                    <div className="milheiroContainer">
+                        <label>Preço Milheiro</label>
+                        <Input type="number" placeholder='R$ 0.00' onChange={(event) => setValorReferencia(event.target.value)} value={valorReferencia} min="0"/>
+                    </div>
+
+                    <div>
+                        <label>Desconto</label>
+                        <Input type="number" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto} min="0" max="100"/>
+                    </div>
+
+                    <div className="bonusContainer">
+                        <p>Bônus</p>
+                        <div className='bonusItems'>
+                            {listaBonus.map((valorBonus, index) => (
+                                <Bonus key={index} valor={valorBonus} isSelected={bonusDisponiveisStatus[index]} onClicked={() => selecionarBonus(index, valorBonus)}/>
+                            ))}
+                        </div>
+                        
+                    </div>
+                    <div className="botaoContainer">
+                        <Button>Calcular</Button>
+                    </div>
+                </form>
+                
+                : 
+                <div>
+                    <button onClick={fecharResultado}>fechar</button>
+                    <Resultado resultados={resultado} /> 
                 </div>
-                <div className="botaoContainer">
-                    <Button>Calcular</Button>
-                </div>
-            </form>
-             
-            : 
-            <div>
-                <button onClick={fecharResultado}>fechar</button>
-                <Resultado resultados={resultado} /> 
-            </div>
-             }
+                }
+                
             
-           
+            </div>
         </div>
 
     )
