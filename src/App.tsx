@@ -6,9 +6,9 @@ import './index.css';
 function App() {
 
   return (
-    <>  
-     <Header/>
-     <Form/>
+    <>
+      <Header />
+      <Form />
     </>
   )
 }

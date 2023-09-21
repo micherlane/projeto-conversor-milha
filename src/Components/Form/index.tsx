@@ -8,6 +8,8 @@ import { CalculoBonusController } from '../../utils/controllers/CalculoBonusCont
 import { ConversorDadosNumber } from '../../utils/controllers/ConversorDadosNumber';
 import { CalculoDescontoController } from '../../utils/controllers/CalculoDescontController';
 import { CalculoValorPorMilhasController } from '../../utils/controllers/CalculoValorPorMilhasController';
+import { NotifyContainer, notifyWarning } from '../Notificacao';
+
 
 export function Form() {
 
@@ -63,7 +65,7 @@ export function Form() {
         event.preventDefault();
 
         if(milhasCompradas === '' || valorReferencia === '' || desconto === ''){
-            alert('Preecha os dados, por favor.');
+            notifyWarning('Por favor, preechar os dados.');
             return;
         }
 
@@ -133,7 +135,7 @@ export function Form() {
                     <Resultado resultados={resultado} /> 
             </div>
             }
-                
+            <NotifyContainer/>
         </div>
 
     )
