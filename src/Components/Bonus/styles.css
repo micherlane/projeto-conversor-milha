@@ -4,6 +4,7 @@
     border-radius: 0.5rem;
     border: 0.2px solid gray;
     box-shadow: 0 0 8px rgba(128, 128, 128, 0.5);
+    margin-top: 0.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,11 +16,11 @@
 }
 
 .bonusStyles:hover {
-    background-color: black;
     color: white;
+    background-color: rgb(14, 129, 10);
 }
 
 .bonusStyles.selected {
-    background-color: #1b1d20;
+    background-color: black;
     color: white;
 }

@@ -1,6 +1,6 @@
 import './styles.css'
-import { Button } from "../ui/Button";
-import { Input } from "../ui/Input";
+import { Button } from "../Button";
+import { Input } from "../Input";
 import { Bonus } from '../Bonus';
 import { Resultado } from '../Resultado';
 import { useState, FormEvent } from 'react';
@@ -37,24 +37,29 @@ export function Form() {
     });
     const [estaCalculadoResultado, setEstaCalculadoResultado] = useState(false);
 
-     // Função para selecionar os bônus.
-     const selecionarBonus = (index: number, value: number) => {
+    // Função para selecionar os bônus.
+    const selecionarBonus = (index: number, value: number) => {
         let bonusDisponiveisStatusAtualizado = [...bonusDisponiveisStatus];
 
         // Atualizar o bônus selecionado.
         bonusDisponiveisStatusAtualizado = bonusDisponiveisStatusAtualizado.map((bonus, indice) => {
-            if(index === indice){
+            if (index === indice) {
                 bonus = !bonus
                 return bonus;
-            } 
+            }
 
             bonus = false;
             return bonus;
         })
-    
+
+
+        if (!bonusDisponiveisStatusAtualizado[index]) {
+            setbonusSelecionado(0);
+        } else {
+            setbonusSelecionado(value);
+        }
 
         setbonusDisponiveisStatus(bonusDisponiveisStatusAtualizado);
-        setbonusSelecionado(value);
     }
 
     const fecharResultado = () => {
@@ -64,7 +69,7 @@ export function Form() {
     const handleCalcular = (event: FormEvent) => {
         event.preventDefault();
 
-        if(milhasCompradas === '' || valorReferencia === '' || desconto === ''){
+        if (milhasCompradas === '' || valorReferencia === '' || desconto === '') {
             notifyWarning('Por favor, preechar os dados.');
             return;
         }
@@ -77,7 +82,7 @@ export function Form() {
 
         const valorPorMilhas = CalculoValorPorMilhasController.calcularValorPorMilhas(milhasTotal, valorComDesconto);
 
-        setResultado({ 
+        setResultado({
             valorReferencia: valorReferencia,
             milhasCompradas: milhasCompradas,
             desconto: desconto,
@@ -91,51 +96,51 @@ export function Form() {
         setEstaCalculadoResultado(true);
     }
 
-   
+
     return (
         <div className="containerCenter">
-            { !estaCalculadoResultado ? 
-            <div className="formStyles">
+            {!estaCalculadoResultado ?
+                <div className="formStyles">
                     <form onSubmit={handleCalcular}>
-                    <div>
-                        <h1>Calculador de Milhas</h1>
-                    </div>
-                    <div className="milhasContainer">
-                        <label>Milhas</label>
-                        <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas} />
-                    </div>
-
-                    <div className="milheiroContainer">
-                        <label>Preço Milheiro</label>
-                        <Input type="number" placeholder='R$ 0.00' onChange={(event) => setValorReferencia(event.target.value)} value={valorReferencia} min="0"/>
-                    </div>
-
-                    <div>
-                        <label>Desconto</label>
-                        <Input type="number" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto} min="0" max="100"/>
-                    </div>
-
-                    <div className="bonusContainer">
-                        <p>Bônus</p>
-                        <div className='bonusItems'>
-                            {listaBonus.map((valorBonus, index) => (
-                                <Bonus key={index} valor={valorBonus} isSelected={bonusDisponiveisStatus[index]} onClicked={() => selecionarBonus(index, valorBonus)}/>
-                            ))}
+                        <div>
+                            <h1>Calculador de Milhas</h1>
                         </div>
-                        
-                    </div>
-                    <div className="botaoContainer">
-                        <Button>Calcular</Button>
-                    </div>
-                </form>
-            </div>
-            : 
-            <div className='resultadosStyle'>
-                    <button onClick={fecharResultado} className='botaoFecharStyle'>fechar</button>
-                    <Resultado resultados={resultado} /> 
-            </div>
+                        <div className="milhasContainer">
+                            <label>Milhas</label>
+                            <Input type="number" placeholder='100.000' onChange={(event) => setMilhasCompradas(event.target.value)} value={milhasCompradas} />
+                        </div>
+
+                        <div className="milheiroContainer">
+                            <label>Preço Milheiro</label>
+                            <Input type="number" placeholder='R$ 0.00' onChange={(event) => setValorReferencia(event.target.value)} value={valorReferencia} min="0" />
+                        </div>
+
+                        <div>
+                            <label>Desconto</label>
+                            <Input type="number" placeholder='100%' onChange={(event) => setDesconto(event.target.value)} value={desconto} min="0" max="100" />
+                        </div>
+
+                        <div className="bonusContainer">
+                            <p>Bônus</p>
+                            <div className='bonusItems'>
+                                {listaBonus.map((valorBonus, index) => (
+                                    <Bonus key={index} valor={valorBonus} isSelected={bonusDisponiveisStatus[index]} onClicked={() => selecionarBonus(index, valorBonus)} />
+                                ))}
+                            </div>
+
+                        </div>
+                        <div className="botaoContainer">
+                            <Button>Calcular</Button>
+                        </div>
+                    </form>
+                </div>
+                :
+                <div className='resultadosStyle'>
+                    <button onClick={fecharResultado} className='botaoFecharStyle'>Fechar</button>
+                    <Resultado resultados={resultado} />
+                </div>
             }
-            <NotifyContainer/>
+            <NotifyContainer />
         </div>
 
     )

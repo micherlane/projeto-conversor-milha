@@ -13,5 +13,5 @@
   
   .inputStyles:focus {
     outline: none; 
-    border-color: #000000;
+    border: 3px solid  rgb(0, 0, 0);;
 }
