@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import './styles.css'
 
 interface ResultadoProps {
@@ -16,49 +17,25 @@ interface ResultadosObject {
     valorPorMilhas: string;
 }
 export function Resultado( {resultados}: ResultadoProps){
+    const renderInformacoes = (label: string, value: string): ReactNode => {
+        return <div className='informacoesStyle'>
+            <p className='propriedadeStyle'>{label}:</p>
+            <p>{value}</p>
+        </div>;
+    }
+
     return (
         <div className='resultadoStyle'>
             <h3>COMPRA DE MILHAS</h3>
             
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Valor de referência:</p>
-                <p>R$ {resultados.valorReferencia}/milheiro</p>
-            </div>
-            
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Milhas a comprar:</p>
-                <p>{resultados.milhasCompradas}</p>
-            </div>
-           
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Desconto:</p>
-                <p>{resultados.desconto}%</p>
-            </div>
-           
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Valor de desconto: </p>
-                <p>R$ {resultados.valorDesconto}/milheiro</p>
-            </div>
-
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Bônus:</p>
-                <p>{resultados.bonus}</p>
-            </div>
-
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Milhas de Bônus: </p>
-                <p>{resultados.milhasDeBonus}</p>
-            </div>
-
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Milhas Totais:</p>
-                <p>{resultados.milhasTotal}</p>
-            </div>
-            
-            <div className='informacoesStyle'>
-                <p className='propriedadeStyle'>Valor total:</p>
-                <p>R$ {resultados.valorTotal}</p>
-            </div>
+            {renderInformacoes('Valor de referência', `R$ ${resultados.valorReferencia}/milheiro`)}
+            {renderInformacoes('Milhas a comprar', resultados.milhasCompradas)}
+            {renderInformacoes('Desconto', `${resultados.desconto}%`)}
+            {renderInformacoes('Valor de desconto', `R$ ${resultados.valorDesconto}/milheiro`)}
+            {renderInformacoes('Bônus', resultados.bonus)}
+            {renderInformacoes('Milhas de Bônus', resultados.milhasDeBonus)}
+            {renderInformacoes('Milhas Totais', resultados.milhasTotal)}
+            {renderInformacoes('Valor total', `R$ ${resultados.valorTotal}`)}
 
             <div className='valorFinalStyle .valorFinalSemBorda'>
                 <p className='textoStyle'>VALOR FINAL MILHEIRO:</p>

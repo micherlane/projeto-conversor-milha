@@ -5,8 +5,7 @@
 
 .resultadoStyle {
     border-radius: 0.5rem;
-    border: 0.3rem solid;
-    margin-top: 20px;
+    margin-top: 0.2rem;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -36,7 +35,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1.5rem;
-    border-top: 0.3rem solid;
     padding-top: 1rem;
 }
 
