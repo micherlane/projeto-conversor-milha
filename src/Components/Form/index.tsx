@@ -62,6 +62,11 @@ export function Form() {
     const handleCalcular = (event: FormEvent) => {
         event.preventDefault();
 
+        if(milhasCompradas === '' || valorReferencia === '' || desconto === ''){
+            alert('Preecha os dados, por favor.');
+            return;
+        }
+
         const milhasDeBonus = CalculoBonusController.calcularBonus(milhasCompradas, bonusSelecionado);
 
         const milhasTotal = milhasDeBonus + ConversorDadosNumber.converterDados(milhasCompradas);
